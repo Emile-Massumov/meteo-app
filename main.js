@@ -8,11 +8,19 @@ let weather  = {
     + this.apiKey
     )
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) => this.displayWeather(data));
     },
     displayWeather: function (data) {
+        const { name } = data;
+        const { icon , text } = data;
+        const {  humidity } = data.current;
+        //console.log(name,icon,text,humidity);
+        document.querySelector(".city").innerText = "Météo à" + name;
+        document.querySelector(".icon").src ="http://cdn.worldweatheronline.com/images/weather/large/113_night_lg.png";
+        document.querySelector(".humidity").innerText = "Humidity" + humidity +"%";
+        document.querySelector(".text").innerText = "text";
 
-    }
+},
 };
 
 
